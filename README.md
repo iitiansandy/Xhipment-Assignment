@@ -22,11 +22,11 @@ You are building a server-side application to manage a job board for software de
 4. Implement a search feature for the job postings.</br>
 <h3>Evaluation</h3></br>
 Your submission will be evaluated based on the following criteria:</br>
-1. Correct functionality of the application</br>
-2. Proper use of Node.js, Express, MongoDB, and RESTful API design</br>
-3. Proper implementation of routing and RESTful API design</br>
-4. Proper error handling and input validation</br>
-5. Use of Markdown to render cover letters</br>
-6. Code quality and organization</br>
+1. Correct functionality of the application.</br>
+2. Proper use of Node.js, Express, MongoDB, and RESTful API design.</br>
+3. Proper implementation of routing and RESTful API design.</br>
+4. Proper error handling and input validation.</br>
+5. Use of Markdown to render cover letters.</br>
+6. Code quality and organization.</br>
 7. If you complete the bonus tasks, your submission will also be evaluated on the implementation of authentication, authorization, pagination, and search.</br>
 For Submissions and Queries about the assignment, please send an email to - </br> <strong>akash@xhipment.com</strong> and <strong>bharat@xhipment.com</strong>
