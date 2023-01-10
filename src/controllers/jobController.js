@@ -81,7 +81,7 @@ const editJob = async (req, res) => {
         let userId = req.params.id || req.query.id;
         if (!userId) return res.status(400).send({ status: false, message: 'pls give a userId in params' });
         if (!isValidObjectId(userId)) return res.status(400).send({ status: false, message: 'pls give a valid userId in params' });
-        let job = await userModel.findById(userId)
+        let job = await jobModel.findById({id: _id});
         if (!job) return res.status(404).send({ status: false, message: 'sorry, No such job exists with this Id' });
 
         let body = req.body;
