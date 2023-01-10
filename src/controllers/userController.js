@@ -26,7 +26,7 @@ const createUser = async (req, res) => {
             return res.status(400).send({ status: false, message: "please fill all field properly" })
         }
 
-        if (!isValidstring(name)) {
+        if (!isValid(name)) {
             return res.status(400).send({ status: false, message: " name should be in onlyalphabate" })
         }
 
@@ -45,11 +45,11 @@ const createUser = async (req, res) => {
 
         data.password = bcrypt.hashSync(password, 10)
 
-        if (!isValidstring(resume)) {
+        if (!isValid(resume)) {
             return res.status(400).send({ status: false, message: " resume should be in onlyalphabate" })
         }
 
-        if (!isValidstring(coverLetter)) {
+        if (!isValid(coverLetter)) {
             return res.status(400).send({ status: false, message: " coverLetter should be in onlyalphabate" })
         }
 
@@ -76,7 +76,7 @@ const loginUser = async (req, res) => {
         let { email, password } = credentials;
         password = password.trim();
         email = email.trim();
-        if (!isValidBody(credentials)) {
+        if (!isValidRequestBody(credentials)) {
             return res.status(400).send({ status: false, message: "Body should not be empty" });
         }
         if (!email || !password) {

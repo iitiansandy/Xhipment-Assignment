@@ -23,11 +23,11 @@ const createJob = async (req, res) => {
             return res.status(400).send({ status: false, message: "please fill all fields properly" });
         }
 
-        if (!isValidstring(title)) {
+        if (!isValid(title)) {
             return res.status(400).send({ status: false, message: " title should be in onlyalphabate" });
         }
 
-        if (!isValidstring(description)) {
+        if (!isValid(description)) {
             return res.status(400).send({ status: false, message: " invalid description" });
         }
 
@@ -35,7 +35,7 @@ const createJob = async (req, res) => {
             return res.status(400).send({ status: false, message: " please provide skills" });
         }
 
-        if (!isValidstring(experience)) {
+        if (!isValid(experience)) {
             return res.status(400).send({ status: false, message: " experience should be in onlyalphabate" });
         }
 
@@ -58,8 +58,8 @@ const createJob = async (req, res) => {
 const getJob = async (req, res) => {
     try {
 
-        let jobs = await jobModel.find({userId});
-        if (users.length == 0) return res.status(404).send({ status: false, message: "There are no jobs." });
+        let jobs = await jobModel.find();
+        if (jobs.length == 0) return res.status(404).send({ status: false, message: "There are no jobs." });
 
         return res.status(200).send({ status: true, data: jobs });
 
@@ -78,21 +78,22 @@ const getJob = async (req, res) => {
 
 const editJob = async (req, res) => {
     try {
-        let jobId = req.params.jobId;
-        if (!jobId) return res.status(400).send({ status: false, message: 'pls give a jobId in params' });
-        if (!isValidObjectId(jobId)) return res.status(400).send({ status: false, message: 'pls give a valid jobId in params' });
-        let job = await jobModel.findById(jobId)
+        let userId = req.params.id || req.query.id;
+        if (!userId) return res.status(400).send({ status: false, message: 'pls give a userId in params' });
+        if (!isValidObjectId(userId)) return res.status(400).send({ status: false, message: 'pls give a valid userId in params' });
+        let job = await userModel.findById(userId)
         if (!job) return res.status(404).send({ status: false, message: 'sorry, No such job exists with this Id' });
 
         let body = req.body;
-        let { title, description, skills, experience } = body;
+        let { jobId, title, description, skills, experience } = body;
         if (isValidRequestBody(body)) return res.status(400).send({ status: false, message: 'please enter body' });
 
-        if (book && book.isDeleted == false) {
-            user.title = title;
-            user.description = description;
-            user.skills = skills;
-            user.experience = experience;
+        if (job && job.isDeleted == false) {
+            job.jobId = jobId;
+            job.title = title;
+            job.description = description;
+            job.skills = skills;
+            job.experience = experience;
 
             job.save();
             return res.status(200).send({ status: true, data: job });
@@ -116,11 +117,11 @@ const editJob = async (req, res) => {
 const deleteJob = async (req, res) => {
     try {
 
-        let jobId = req.params.jobId;
+        let jobId = req.params.id;
         console.log(jobId);
         if (!mongoose.Types.ObjectId.isValid(jobId)) return res.status(400).send({ status: false, message: "Give a valid job ObjectId" });
 
-        let job = await jobModel.findOne({ _id: userId, isDeleted: false });
+        let job = await jobModel.findOne({ _id: jobId, isDeleted: false });
         if (!job) return res.status(404).send({ status: false, message: "This job doesn't exists." });
 
         await jobModel.findOneAndUpdate({ _id: id }, { isDeleted: true });

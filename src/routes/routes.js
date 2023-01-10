@@ -15,8 +15,8 @@ router.post("/login", userController.loginUser);
 
 router.post("/job", Authentication, jobController.createJob);
 router.get("/job", Authentication, jobController.getJob);
-router.put("/job", Authentication, Authorization, jobController.editJob);
-router.delete("/job", Authentication, Authorization, jobController.deleteJob);
+router.put("/job/:id", Authentication, Authorization, jobController.editJob);
+router.delete("/job/:id", Authentication, Authorization, jobController.deleteJob);
 
 
 module.exports = router;

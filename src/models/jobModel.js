@@ -17,13 +17,13 @@ let jobSchema = new mongoose.Schema(
         skills: {
             type: String,
             require: true,
-            unique: true
+            trim: true
         },
 
         experience: {
             type: String,
             require: true,
-            unique: true
+            trim: true
         }
     }, { timestamps: true }
 );

@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const route = require("./routes/routes.js")
+const route = require("./routes/routes.js");
+const multer = require("multer");
 const app = express();
 app.use(multer().any());
 app.use(express.json());

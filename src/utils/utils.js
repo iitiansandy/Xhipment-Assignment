@@ -1,4 +1,4 @@
-const mongoose = require('mongoose').Types.ObjectId;
+const ObjectId = require('mongoose').Types.ObjectId;
 
 const isValidRequestBody = (requestBody) => {
     return Object.keys(requestBody).length > 0;

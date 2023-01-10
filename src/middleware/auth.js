@@ -2,7 +2,8 @@
 const jwt = require("jsonwebtoken");
 const userModel = require("../models/userModel");
 const jobModel = require("../models/jobModel");
-const validator = require("../utils/validator");
+const { isValidRequestBody, isValidObjectId, isValid, isValidEmail, isValidPassword } = require('../utils/utils');
+// const validator = require("../utils/utils");
 
 
 
@@ -15,7 +16,7 @@ const Authentication = async function (req, res, next) {
       let token = req.headers["x-api-key"]
       if (!token) req.headers["X-Api-Key"]
       if (!token) return res.status(400).send({ status: false, message: "Token must be present in header" })
-      jwt.verify(token, "cendrol-technologies", { ignoreExpiration: true }, function (err, decoded) {
+      jwt.verify(token, "xhipment-tech", { ignoreExpiration: true }, function (err, decoded) {
           if (err) { return res.status(400).send({ status: false, meessage: "token invalid" }) }
           else {
               //The static Date.now() method returns the number of milliseconds elapsed since January 1, 1970
@@ -43,16 +44,16 @@ const Authentication = async function (req, res, next) {
 
 const Authorization = async (req,res,next) =>{
 
-  let userId = req.body.userId
-  if(!validator.isValidObjectId(userId)) return res.status(404).send({status: false,message: "user Id not valid"})
+  let userId = req.params.id || req.query.id;
+  if(!isValidObjectId(userId)) return res.status(400).send({status: false,message: "userId is not valid"});
 
-  let user = await userModel.findById({_id:userId})
-  if(!user)  return res.status(404).send({status: false,message: "customer Id not found"})
+  let user = await userModel.findById({_id:userId});
+  if(!user)  return res.status(404).send({status: false,message: "user Id not found"});
 
   if(user._id.toString()!==req.userId){
-    return res.status(403).send({status: false,message: "Unauthorized access! customer's info doesn't match"})
+    return res.status(403).send({status: false,message: "Unauthorized access! user's info doesn't match"});
   }
   next();
-}
+};
 
-module.exports = {Authentication,Authorization}
+module.exports = {Authentication,Authorization};
