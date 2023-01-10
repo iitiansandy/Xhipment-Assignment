@@ -1,37 +1,32 @@
-# Order Management System
+# Xhipment Nodejs Assignment
 
-This simple order management application with the below requirements : </br>
-● Creation of Customers </br>
-● Customers can create orders. For simplicity, once an order is created, thats final.
-There is no order status like created, payment done, completed etc. It is
-assumed that customer has already made the payment while creating the order. </br>
-● Customers are categorized as regular, gold, platinum </br>
-● By default, a customer is regular. </br>
-&nbsp;&nbsp;&nbsp;○ Customer is promoted to gold when he has placed 10 orders </br>
-&nbsp;&nbsp;&nbsp;○ Customer is promoted to platinum when he has placed 20 orders </br>
-● Gold = 10% discount, platinum = 20% discount </br>
-● When a customer creates an order, if he is a gold customer, automatically 10%
-discount is applied on the order. 20% for platinum customers. </br>
-● Since it is assumed that customer has already made the full payment during
-creation of the order, this discount information has to be kept safe by the
-application. We need to keep track of how much discount is given to which
-customer and for which order, so that customers can claim money back later. </br>
-● It is not mandatory to implement any other entities which are not mentioned here,
-like products or payments etc. </br>
-<h3> Hints </h3> </br>
-● Identify the entities </br>
-● Think of the REST APIs needed. </br>
-● Identify things which can be done asynchronuosly </br>
-<h3> Expectations </h3> </br>
-● Clean, standard REST APIs </br> 
-● Well defined entities. You can use any database of your choice </br>
-● Junit test cases </br>
-<h3> Nice to have </h3> </br>
-● Cron job to send emails to customer when they are approaching the
-gold/platinum barriers. For e.g., email to customer when a customer has 9 orders </br>
-<strong>:</strong> "You have placed 9 orders with us. Buy one more stuff and you will be
-promoted to Gold customer and enjoy 10% discounts!" </br>
-You dont need to actually send the emails. It can be a dummy method like this : </br>
-void sendMail() { </br>
-System.out.println("Sent mail to customer"); </br>
-}
+<h3>Assignment</h3></br>
+You are building a server-side application to manage a job board for software developers. The application should have the following features:</br>
+1. A user can create a new job posting by providing a title, description, and their email address. The user should also be able to specify the required skills and experience level for the job.</br>
+2. A user can view a list of all current job postings, filtered by required skills and experience level.</br>
+3. A user can view the details of a specific job posting, including the title, description, required skills, experience level, and email address of the person who created the posting.</br>
+4. A user can apply for a job posting by providing their name, email, resume, and a cover letter. The cover letter should be in Markdown format.</br>
+5. A user who created a job posting can view a list of all the applications for that job, including the name, email, and cover letter of the applicant.</br>
+6. The application should be built using Node.js and Express, and should persist data using a MongoDB database. It should expose a RESTful API for clients to access the job postings and applications.</br>
+<h3>Requirements</h3></br>
+1. Use Node.js and Express to build the application.</br>
+2. Use MongoDB to store and retrieve data.</br>
+3. Expose a RESTful API for clients to access the job postings and applications.</br>
+4. Use proper routing and RESTful API design.</br>
+5. Use proper error handling and input validation.</br>
+6. Use Markdown to render the cover letters of job applications.</br>
+<h3>Bonus</h3></br>
+1. Implement authentication and authorization for the application.</br>
+2. Allow users to edit and delete their own job postings and applications.</br>
+3. Add pagination to the list of job postings and applications.</br>
+4. Implement a search feature for the job postings.</br>
+<h3>Evaluation</h3></br>
+Your submission will be evaluated based on the following criteria:</br>
+1. Correct functionality of the application.</br>
+2. Proper use of Node.js, Express, MongoDB, and RESTful API design.</br>
+3. Proper implementation of routing and RESTful API design.</br>
+4. Proper error handling and input validation.</br>
+5. Use of Markdown to render cover letters.</br>
+6. Code quality and organization.</br>
+7. If you complete the bonus tasks, your submission will also be evaluated on the implementation of authentication, authorization, pagination, and search.</br>
+For Submissions and Queries about the assignment, please send an email to - </br> <strong>akash@xhipment.com</strong> and <strong>bharat@xhipment.com</strong>
