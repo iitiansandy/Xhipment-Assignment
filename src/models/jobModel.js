@@ -24,7 +24,10 @@ let jobSchema = new mongoose.Schema(
             type: String,
             require: true,
             trim: true
-        }
+        },
+
+        isDeleted: { type: Boolean, default: false },
+
     }, { timestamps: true }
 );
 
