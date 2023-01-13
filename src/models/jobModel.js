@@ -26,6 +26,8 @@ let jobSchema = new mongoose.Schema(
             trim: true
         },
 
+        userId: { type: ObjectId, ref: 'User' },
+
         isDeleted: { type: Boolean, default: false },
 
     }, { timestamps: true }
