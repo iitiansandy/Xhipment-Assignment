@@ -2,7 +2,7 @@
 const jwt = require("jsonwebtoken");
 const userModel = require("../models/userModel");
 const jobModel = require("../models/jobModel");
-const { isValidRequestBody, isValidObjectId, isValid, isValidEmail, isValidPassword } = require('../utils/utils');
+const { isValidObjectId } = require('../utils/utils');
 // const validator = require("../utils/utils");
 
 
@@ -56,4 +56,4 @@ const Authorization = async (req,res,next) =>{
   next();
 };
 
-module.exports = {Authentication,Authorization};
+module.exports = { Authentication, Authorization };
